@@ -2,4 +2,4 @@ nguage: php
 php:
   - 5.3
 
-script: phpunit tests/*
+script: phpunit src/tests/*
