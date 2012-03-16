@@ -24,7 +24,7 @@
             $newPassword = 'abcdefg';
             $this->user->setPassword($newPassword);
             
-            $this->assertEquals($this->user->password, md5($newPassword));
+            $this->assertEquals($this->user->passwordMD5, md5($newPassword));
         }
     }
     
