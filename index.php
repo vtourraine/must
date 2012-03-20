@@ -9,7 +9,7 @@
     $session->start();
     
     MainTemplates::echoMainHeader();
-        
+    
     if ($session->isLoggedIn())
     {
         echo 'Welcome';
@@ -18,7 +18,13 @@
     {
         if (LoginController::isLoginFormSubmitted($_POST))
         {
-            LoginController::logIn($_POST, $session);
+            if (LoginController::logIn($_POST, $session))
+            {
+            }
+            else
+            {
+                MainTemplates::echoLoginForm();
+            }
         }
         else
         {

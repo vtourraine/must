@@ -1,5 +1,7 @@
 <?php
 
+    require_once dirname(__FILE__).'/../model/User.php';
+
     /**
     * LoginController
     */
@@ -27,12 +29,28 @@
             $formUsername = $formData['username'];
             $formPassword = $formData['password'];
             
-            // todo
-            // check against real login/password values
+            try
+            {
+                $user = new User($formUsername);
+                
+                if ($user->passwordMD5 == md5($formPassword))
+                {
+                    $session->logIn($formUsername, $formPassword);
+                    echo '<section><p>Welcome</p></section>';
+                }
+                else
+                {
+                    echo '<section><p>Sorry, but I can\'t let you in.</p></section>';
+                    return false;
+                }
+            }
+            catch (Exception $e)
+            {
+                echo '<section><p>Sorry, have we met before?</p></section>';
+                return false;
+            }
             
-            $session->logIn($formUsername, $formPassword);
-            
-            return false;
+            return true;
         }
     }
 
