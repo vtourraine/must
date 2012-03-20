@@ -3,6 +3,7 @@
     require_once('src/model/Session.php');
     require_once('src/model/User.php');
     require_once('src/view/MainTemplates.php');
+    require_once('src/controller/LoginController.php');
     
     $session = new Session();
     $session->start();
@@ -15,7 +16,14 @@
     }
     else
     {
-        MainTemplates::echoLoginForm();
+        if (LoginController::isLoginFormSubmitted($_POST))
+        {
+            LoginController::logIn($_POST, $session);
+        }
+        else
+        {
+            MainTemplates::echoLoginForm();
+        }
     }
     
     MainTemplates::echoMainFooter();

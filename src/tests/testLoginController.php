@@ -15,7 +15,7 @@
         
         public function testShouldDetectLoginFormSubmitted()
         {
-            $formData = array('login'=>'test', 'password'=>'abc');
+            $formData = array('username'=>'test', 'password'=>'abc');
             $isSubmitted = LoginController::isLoginFormSubmitted($formData);
             
             $this->assertTrue($isSubmitted);
@@ -23,7 +23,7 @@
         
         public function testShouldDetectLoginFormNotSubmitted()
         {
-            $formData = array('login'=>'test');
+            $formData = array('username'=>'test');
             $isSubmitted = LoginController::isLoginFormSubmitted($formData);
             
             $this->assertFalse($isSubmitted);
