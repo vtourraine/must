@@ -7,6 +7,7 @@
     {
         public $username = '';
         public $passwordMD5 = '';
+        public $selections = null;
         
         /**
         * constructor
@@ -30,6 +31,7 @@
             
             $this->username = $userData->username;
             $this->passwordMD5 = $userData->passwordMD5;
+            $this->selections = $userData->selections;
         }
         
         /**
