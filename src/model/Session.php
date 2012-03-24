@@ -30,6 +30,14 @@
         }
         
         /**
+        * username
+        */
+        public function username()
+        {
+            return $this->data['username'];
+        }
+        
+        /**
         * logIn
         */
         public function logIn($username, $password)

@@ -7,6 +7,7 @@
     {
         public $username = '';
         public $passwordMD5 = '';
+        public $selections = null;
         
         /**
         * constructor
@@ -30,6 +31,7 @@
             
             $this->username = $userData->username;
             $this->passwordMD5 = $userData->passwordMD5;
+            $this->selections = $userData->selections;
         }
         
         /**
@@ -39,6 +41,16 @@
         {
             $this->passwordMD5 = md5($newPassword);
             return $this->passwordMD5;
+        }
+        
+        /**
+        * saveData
+        */
+        public function saveData()
+        {
+            $userDataJSON = json_encode($this);
+            $userDataPath = dirname(__FILE__).'/../../data/user/'.$this->username.'.json';
+            file_put_contents($userDataPath, $userDataJSON);
         }
     }
 
