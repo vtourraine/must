@@ -5,4 +5,4 @@ _A (very) tiny social network for sharing stuff._
 
 ***
 
-KS/Must v0.2
+KS/Must v1.0
