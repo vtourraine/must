@@ -42,6 +42,16 @@
             $this->passwordMD5 = md5($newPassword);
             return $this->passwordMD5;
         }
+        
+        /**
+        * saveData
+        */
+        public function saveData()
+        {
+            $userDataJSON = json_encode($this);
+            $userDataPath = dirname(__FILE__).'/../../data/user/'.$this->username.'.json';
+            file_put_contents($userDataPath, $userDataJSON);
+        }
     }
 
 ?>

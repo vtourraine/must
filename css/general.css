@@ -4,10 +4,16 @@
 
 body
 {
-	background-color: black;
-	color: white;
+	background-color: white;
+	color: black;
 	font-family: 'Bitter', serif;
 	margin-bottom: 100px;
+}
+::selection,
+::-moz-selection
+{
+    background-color: #333;
+    color: #eee;
 }
 
 header
@@ -53,7 +59,7 @@ section > h2
 	text-align: left;
 	margin-bottom: 20px;
 	padding: 20px;
-	background: url('../img/textures/stripes-d.png') repeat;
+	background: url('../img/textures/stripes-w.png') repeat;
 }
 .edit form > div
 {
