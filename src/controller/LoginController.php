@@ -9,7 +9,7 @@
     {   
     
         /**
-        * echoLoginForm
+        * isLoginFormSubmitted
         */
         public static function isLoginFormSubmitted($formData)
         {

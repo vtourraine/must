@@ -1,19 +1,12 @@
 <?php
 
+    require_once dirname(__FILE__).'/Templates.php';
+    
     /**
-    * User
+    * MainTemplates
     */
-    class MainTemplates
+    class MainTemplates extends Templates
     {   
-        /**
-        * echoContentOfFile
-        */
-        public static function echoContentOfFile($filePath)
-        {
-            $content = file_get_contents($filePath);
-            echo $content;
-        }
-        
         /**
         * echoMainHeader
         */
