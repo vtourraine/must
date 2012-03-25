@@ -29,6 +29,30 @@
             $formUsername = $formData['username'];
             $formPassword = $formData['password'];
             
+            if (isset($formData['password2']))
+            {
+                $formPassword2 = $formData['password2'];
+                
+                if (file_exists(User::pathToDataFile($formUsername)))
+                {
+                    echo '<section><p>User already exists.</p></section>';
+                    return false;
+                }
+                else if ($formPassword != $formPassword2)
+                {
+                    echo '<section><p>Please concentrate!</p></section>';
+                    return false;
+                }
+                else
+                {
+                    User::createNewUser($formUsername, $formPassword);
+                    
+                    echo '<section><p>Congrats, you\'re in!</p></section>';
+                    
+                    return false;
+                }
+            }
+            
             try
             {
                 $user = new User($formUsername);

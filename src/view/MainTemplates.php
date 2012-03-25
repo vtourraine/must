@@ -28,7 +28,14 @@
         */
         public static function echoLoginForm()
         {
-            MainTemplates::echoContentOfFile(dirname(__FILE__).'/LoginForm.html');
+            if (isset($_GET['new']))
+            {
+                MainTemplates::echoContentOfFile(dirname(__FILE__).'/CreateUserForm.html');
+            }
+            else
+            {
+                MainTemplates::echoContentOfFile(dirname(__FILE__).'/LoginForm.html');
+            }
         }
     }
 

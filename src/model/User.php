@@ -10,11 +10,30 @@
         public $selections = null;
         
         /**
+        * pathToDataFile
+        */
+        public static function pathToDataFile($aUsername)
+        {
+            return dirname(__FILE__).'/../../data/user/'.$aUsername.'.json';
+        }
+        
+        /**
+        * createNewUser
+        */
+        public static function createNewUser($aUsername, $aPassword)
+        {
+            $userData = (object) array('username'=>$aUsername, 'passwordMD5'=>md5($aPassword), 'selections'=>(object)array());
+            $userDataPath = User::pathToDataFile($aUsername);
+            $userDataJSON = json_encode($userData);
+            file_put_contents($userDataPath, $userDataJSON);
+        }
+        
+        /**
         * constructor
         */
         public function __construct($aUsername)
         {
-            $userDataPath = dirname(__FILE__).'/../../data/user/'.$aUsername.'.json';
+            $userDataPath = User::pathToDataFile($aUsername);
             
             if (!file_exists($userDataPath))
             {
@@ -49,7 +68,7 @@
         public function saveData()
         {
             $userDataJSON = json_encode($this);
-            $userDataPath = dirname(__FILE__).'/../../data/user/'.$this->username.'.json';
+            $userDataPath = User::pathToDataFile($this->username);
             file_put_contents($userDataPath, $userDataJSON);
         }
     }
