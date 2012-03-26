@@ -1,5 +1,7 @@
 <?php
 
+    require_once dirname(__FILE__).'/../model/SelectionDate.php';
+
     /**
     * User
     */
@@ -70,6 +72,30 @@
             $userDataJSON = json_encode($this);
             $userDataPath = User::pathToDataFile($this->username);
             file_put_contents($userDataPath, $userDataJSON);
+        }
+        
+        /**
+        * currentSelection
+        */
+        public function currentSelection()
+        {
+            $currentDate = SelectionDate::currentDateIdentifier();
+            
+            if (isset($this->selections->$currentDate))
+            {
+                return $this->selections->$currentDate;
+            }
+            else
+            {
+                $emptySelection = array();
+                for ($i = 1; $i <= NUMBER_OF_SELECTIONS; $i++)
+                    $emptySelection[] = (object)array('artist'=>'', 'title'=>'', 'coverURL'=>'', 'playURL'=>'');
+                $this->selections->$currentDate = $emptySelection;
+                
+                $this->saveData();
+                
+                return $emptySelection;
+            }
         }
     }
 

@@ -11,6 +11,7 @@
     
     $session = new Session();
     $session->start();
+    //$session->logOut();
     
     MainTemplates::echoMainHeader();
     

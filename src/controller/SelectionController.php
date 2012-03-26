@@ -61,8 +61,7 @@
         public function echoEditForm($username)
         {
             $user = new User($username);
-            $currentDate = SelectionDate::currentDateIdentifier();
-            EditTemplates::echoEditSelectionForm($user->selections->$currentDate);
+            EditTemplates::echoEditSelectionForm($user->currentSelection());
         }
     }
 
