@@ -11,6 +11,7 @@
     
     $session = new Session();
     $session->start();
+    //$session->logOut();
     
     MainTemplates::echoMainHeader();
     
@@ -39,6 +40,7 @@
         }
         
         SelectionController::echoEditForm($session->username());
+        SelectionController::echoCurrentSelection($session->username());
     }
     
     MainTemplates::echoMainFooter();
