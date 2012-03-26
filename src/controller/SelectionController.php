@@ -2,6 +2,7 @@
 
     require_once dirname(__FILE__).'/../model/User.php';
     require_once dirname(__FILE__).'/../model/SelectionDate.php';
+    require_once dirname(__FILE__).'/../view/MainTemplates.php';
     require_once dirname(__FILE__).'/../view/EditTemplates.php';
 
     /**
@@ -61,8 +62,16 @@
         public function echoEditForm($username)
         {
             $user = new User($username);
-            $currentDate = SelectionDate::currentDateIdentifier();
-            EditTemplates::echoEditSelectionForm($user->selections->$currentDate);
+            EditTemplates::echoEditSelectionForm($user->currentSelection());
+        }
+        
+        /**
+        * echoCurrentSelection
+        */
+        public function echoCurrentSelection($username)
+        {
+            $user = new User($username);
+            MainTemplates::echoSelectionTemplate($username, $user->currentSelection());
         }
     }
 
