@@ -47,7 +47,7 @@
                 {
                     User::createNewUser($formUsername, $formPassword);
                     
-                    echo '<section><p>Congrats, you\'re in!</p></section>';
+                    echo '<section><p>Congrats, you\'re in!<br/>(now please log in)</p></section>';
                     
                     return false;
                 }
