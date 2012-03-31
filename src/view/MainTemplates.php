@@ -43,6 +43,12 @@
         */
         public static function echoSelectionTemplate($username, $selection)
         {
+            if (!$selection)
+            {
+                echo '<section><p>Nothing here, yet.</p></section>';
+                return;
+            }
+                
             $strings = array('[USERNAME]'=>$username);
             
             for ($i = 1; $i <= NUMBER_OF_SELECTIONS; $i++)

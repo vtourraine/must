@@ -97,6 +97,21 @@
                 return $emptySelection;
             }
         }
+        
+        /**
+        * previousSelection
+        */
+        public function previousSelection()
+        {
+            $previousDate = SelectionDate::previousDateIdentifier();
+            
+            if (isset($this->selections->$previousDate))
+            {
+                return $this->selections->$previousDate;
+            }
+            
+            return null;
+        }
     }
 
 ?>

@@ -15,27 +15,15 @@
     
     MainTemplates::echoMainHeader();
     
-    if (!$session->isLoggedIn())
-    {
-        if (LoginController::isLoginFormSubmitted($_POST))
-        {
-            if (LoginController::logIn($_POST, $session))
-            {
-            }
-            else
-            {
-                MainTemplates::echoLoginForm();
-            }
-        }
-        else
-        {
-            MainTemplates::echoLoginForm();
-        }
-    }
     if ($session->isLoggedIn())
     {
-        $usernames = array('eurimos', 'Tast', 'Terenn');
-        SelectionController::echoPreviousSelections($usernames);
+        if (SelectionController::isSelectionFormSubmitted($_POST))
+        {
+            SelectionController::updateSelection($_POST, $session);
+        }
+        
+        SelectionController::echoEditForm($session->username());
+        SelectionController::echoCurrentSelection($session->username());
     }
     
     MainTemplates::echoMainFooter();

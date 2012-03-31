@@ -18,6 +18,7 @@ body
 
 a
 {
+    color: black;
     text-decoration: none;
 }
 
@@ -25,7 +26,22 @@ header
 {
 	text-align: center;
 }
-
+header > *
+{
+	display: inline-block;
+	font-style: italic;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+header a:HOVER
+{
+    color: #333;
+}
+header a:ACTIVE
+{
+    position: relative;
+    top: 1px;
+}
 
 section
 {
@@ -133,6 +149,49 @@ section > h2
 .edit h2
 {
     top: 0px;
+}
+
+img#gear
+{
+	margin-left: 10px;
+	position: relative;
+	top: 3px;
+	
+	opacity: 0.6;
+	-webkit-transition: opacity 500ms ease-in-out;
+	-moz-transition: opacity 500ms ease-in-out;
+	-o-transition: opacity 500ms ease-in-out;
+	-ms-transition: opacity 500ms ease-in-out;
+	transition: opacity 500ms ease-in-out;
+}
+img#gear:HOVER
+{
+	opacity: 1;
+	cursor: pointer;
+	
+  /* webkit chrome, safari, mobile */
+  -webkit-animation-name: spin; 
+  -webkit-animation-duration: 2000ms; /* 40 seconds */
+  -webkit-animation-iteration-count: infinite; 
+  -webkit-animation-timing-function: linear;
+	  
+  /* mozilla ff */
+  -moz-animation-name: spin; 
+  -moz-animation-duration: 2000ms; /* 40 seconds */
+  -moz-animation-iteration-count: infinite; 
+  -moz-animation-timing-function: linear;
+	  
+	 /* microsoft ie */
+	 -ms-animation-name: spin; 
+	 -ms-animation-duration: 2000ms; /* 40 seconds */
+	 -ms-animation-iteration-count: infinite; 
+	 -ms-animation-timing-function: linear;
+}
+img#gear:ACTIVE
+{
+	width: 24px;
+	top: 3px;
+	opacity: 0.8;
 }
 
 @media all and (max-width: 450px)

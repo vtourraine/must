@@ -15,6 +15,16 @@
         }
         
         /**
+        * previousDateIdentifier
+        */
+        public static function previousDateIdentifier()
+        {
+            $date = getdate();
+            $date['mon'] = $date['mon'] - 1;
+            return SelectionDate::dateIdentifier($date);
+        }
+        
+        /**
         * dateIdentifier
         */
         public static function dateIdentifier($date)

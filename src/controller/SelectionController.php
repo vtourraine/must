@@ -73,6 +73,17 @@
             $user = new User($username);
             MainTemplates::echoSelectionTemplate($username, $user->currentSelection());
         }
+        
+        /**
+        * echoPreviousSelections
+        */
+        public function echoPreviousSelections($usernames)
+        {
+            foreach ($usernames as $username) {
+                $user = new User($username);
+                MainTemplates::echoSelectionTemplate($username, $user->previousSelection());
+            }
+        }
     }
 
 ?>
