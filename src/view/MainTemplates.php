@@ -43,21 +43,27 @@
         */
         public static function echoSelectionTemplate($username, $selection)
         {
+            if (!$selection)
+            {
+                echo '<section><p>Nothing here, yet.</p></section>';
+                return;
+            }
+                
             $strings = array('[USERNAME]'=>$username);
             
             for ($i = 1; $i <= NUMBER_OF_SELECTIONS; $i++)
             {
                 $index = $i - 1;
-                $strings['[S-'.$i.'-ARTIST]'] = $selection[$index]->artist;
-                $strings['[S-'.$i.'-TITLE]'] = $selection[$index]->title;
+                $strings['[S-'.$i.'-ARTIST]'] = utf8_decode($selection[$index]->artist);
+                $strings['[S-'.$i.'-TITLE]'] = utf8_decode($selection[$index]->title);
                 
                 if ($selection[$index]->coverURL != '')
-                    $strings['[S-'.$i.'-COVER-URL]'] = 'src="'.$selection[$index]->coverURL.'" alt="album cover" ';
+                    $strings['[S-'.$i.'-COVER-URL]'] = 'src="'.utf8_decode($selection[$index]->coverURL).'" alt="album cover" ';
                 else
                     $strings['[S-'.$i.'-COVER-URL]'] = '';
                     
                 if ($selection[$index]->playURL != '')
-                    $strings['[S-'.$i.'-PLAY-URL]'] = '<a class="play" href="'.$selection[$index]->playURL.'">&#9654;</a>';
+                    $strings['[S-'.$i.'-PLAY-URL]'] = '<a class="play" href="'.utf8_decode($selection[$index]->playURL).'">&#9654;</a>';
                 else
                     $strings['[S-'.$i.'-PLAY-URL]'] = '';
             }

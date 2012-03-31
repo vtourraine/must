@@ -44,10 +44,10 @@
             {
                 $index = $i-1;
                 
-                $currentSelection[$index]->artist   = $formData['s-'.$i.'-artist'];
-                $currentSelection[$index]->title    = $formData['s-'.$i.'-title'];
-                $currentSelection[$index]->coverURL = $formData['s-'.$i.'-coverURL'];
-                $currentSelection[$index]->playURL  = $formData['s-'.$i.'-playURL'];
+                $currentSelection[$index]->artist   = utf8_encode($formData['s-'.$i.'-artist']);
+                $currentSelection[$index]->title    = utf8_encode($formData['s-'.$i.'-title']);
+                $currentSelection[$index]->coverURL = utf8_encode($formData['s-'.$i.'-coverURL']);
+                $currentSelection[$index]->playURL  = utf8_encode($formData['s-'.$i.'-playURL']);
             }
             
             $user->saveData();
@@ -72,6 +72,17 @@
         {
             $user = new User($username);
             MainTemplates::echoSelectionTemplate($username, $user->currentSelection());
+        }
+        
+        /**
+        * echoPreviousSelections
+        */
+        public function echoPreviousSelections($usernames)
+        {
+            foreach ($usernames as $username) {
+                $user = new User($username);
+                MainTemplates::echoSelectionTemplate($username, $user->previousSelection());
+            }
         }
     }
 
