@@ -18,6 +18,7 @@ body
 
 a
 {
+    color: black;
     text-decoration: none;
 }
 
@@ -25,7 +26,22 @@ header
 {
 	text-align: center;
 }
-
+header > *
+{
+	display: inline-block;
+	font-style: italic;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+header a:HOVER
+{
+    color: #333;
+}
+header a:ACTIVE
+{
+    position: relative;
+    top: 1px;
+}
 
 section
 {
@@ -44,14 +60,6 @@ section > h2
 {
 	display: inline-block;
 	position: relative;
-	top: -16px;
-	width: 30px;
-	
-	transform:rotate(90deg);
-	-ms-transform:rotate(90deg); /* IE 9 */
-	-moz-transform:rotate(90deg); /* Firefox */
-	-webkit-transform:rotate(90deg); /* Safari and Chrome */
-	-o-transform:rotate(90deg); /* Opera */
 }
 
 
@@ -59,6 +67,7 @@ section > h2
 {
 	display: inline-block;
 	position: relative;
+	padding: 2px;
 }
 .album img
 {
@@ -140,4 +149,145 @@ section > h2
 .edit h2
 {
     top: 0px;
+}
+
+img#gear
+{
+	margin-left: 10px;
+	position: relative;
+	top: 3px;
+	
+	opacity: 0.6;
+	-webkit-transition: opacity 500ms ease-in-out;
+	-moz-transition: opacity 500ms ease-in-out;
+	-o-transition: opacity 500ms ease-in-out;
+	-ms-transition: opacity 500ms ease-in-out;
+	transition: opacity 500ms ease-in-out;
+}
+img#gear:HOVER
+{
+	opacity: 1;
+	cursor: pointer;
+	
+  /* webkit chrome, safari, mobile */
+  -webkit-animation-name: spin; 
+  -webkit-animation-duration: 2000ms; /* 40 seconds */
+  -webkit-animation-iteration-count: infinite; 
+  -webkit-animation-timing-function: linear;
+	  
+  /* mozilla ff */
+  -moz-animation-name: spin; 
+  -moz-animation-duration: 2000ms; /* 40 seconds */
+  -moz-animation-iteration-count: infinite; 
+  -moz-animation-timing-function: linear;
+	  
+	 /* microsoft ie */
+	 -ms-animation-name: spin; 
+	 -ms-animation-duration: 2000ms; /* 40 seconds */
+	 -ms-animation-iteration-count: infinite; 
+	 -ms-animation-timing-function: linear;
+}
+img#gear:ACTIVE
+{
+	width: 24px;
+	top: 3px;
+	opacity: 0.8;
+}
+
+@media all and (max-width: 450px)
+{
+    section > h2,
+    label,
+    input
+    {
+    	display: block;
+    }
+    .edit form > div
+    {
+        text-align: left;
+    }
+}
+@media all and (max-width: 850px)
+{
+    section
+    {
+        width: 100%;
+        margin: 0px;
+    }
+    section > *
+    {
+        display: block;
+        position: relative;
+        margin: 0px;
+        padding: 0px;
+        width: 99%;
+    }
+    section.edit
+    {
+        margin-bottom: 60px;
+    }
+    
+    section > h2
+    {
+        top: 0px;
+        margin-bottom: 10px;
+    }
+    
+    .edit form
+    {
+        padding: 0 0 20px 0;
+        margin: 0px auto 20px auto;
+        max-width: 300px;
+    }
+    .edit form > div
+    {
+        padding: 20px 0px 0px 0px;
+        margin-bottom: 0px;
+        width: 100%;
+    }
+    .edit form > div > *
+    {
+        margin: 0 20px 0 20px;
+    }
+    
+    .album img
+    {
+    	width: auto;
+    	height: auto;
+    	
+    	min-width: 120px;
+    	min-height: 120px;
+    	max-width: 100%;
+    }
+    
+    .album > .metadata
+    {
+    	opacity: 1;
+    }
+}
+@media all and (min-width: 851px)
+{
+    section > h2
+    {
+    	transform:rotate(90deg);
+    	-ms-transform:rotate(90deg);
+    	-moz-transform:rotate(90deg);
+    	-webkit-transform:rotate(90deg);
+    	-o-transform:rotate(90deg);
+    }
+    
+    section > h2
+    {
+    	top: -16px;
+    	width: 30px;
+    }
+}
+
+@media all and (min-width: 1600px)
+{
+    .album img
+    {
+    	width: 500px;
+    	height: 500px;
+    }
 }
