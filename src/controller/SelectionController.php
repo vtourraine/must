@@ -32,7 +32,18 @@
         }
         
         /**
-        * isSelectionFormSubmitted
+        * sanitizeFormInput
+        */
+        public static function sanitizeFormInput($input)
+        {
+            $input = str_replace('\\\'', '\'', $input);
+            $input = utf8_encode($input);
+            
+            return $input;
+        }
+        
+        /**
+        * updateSelection
         */
         public static function updateSelection($formData, $session)
         {
@@ -44,10 +55,10 @@
             {
                 $index = $i-1;
                 
-                $currentSelection[$index]->artist   = utf8_encode($formData['s-'.$i.'-artist']);
-                $currentSelection[$index]->title    = utf8_encode($formData['s-'.$i.'-title']);
-                $currentSelection[$index]->coverURL = utf8_encode($formData['s-'.$i.'-coverURL']);
-                $currentSelection[$index]->playURL  = utf8_encode($formData['s-'.$i.'-playURL']);
+                $currentSelection[$index]->artist   = SelectionController::sanitizeFormInput($formData['s-'.$i.'-artist']);
+                $currentSelection[$index]->title    = SelectionController::sanitizeFormInput($formData['s-'.$i.'-title']);
+                $currentSelection[$index]->coverURL = SelectionController::sanitizeFormInput($formData['s-'.$i.'-coverURL']);
+                $currentSelection[$index]->playURL  = SelectionController::sanitizeFormInput($formData['s-'.$i.'-playURL']);
             }
             
             $user->saveData();
