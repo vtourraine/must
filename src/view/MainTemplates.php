@@ -63,7 +63,7 @@
                     $strings['[S-'.$i.'-COVER-URL]'] = '';
                     
                 if ($selection[$index]->playURL != '')
-                    $strings['[S-'.$i.'-PLAY-URL]'] = '<a class="play" href="'.utf8_decode($selection[$index]->playURL).'">&#9654;</a>';
+                    $strings['[S-'.$i.'-PLAY-URL]'] = '<a class="play" href="'.utf8_decode($selection[$index]->playURL).'" target="_blank">&#9654;</a>';
                 else
                     $strings['[S-'.$i.'-PLAY-URL]'] = '';
             }
