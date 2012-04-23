@@ -73,8 +73,8 @@ section > h2
 {
 	display: block;
 	background: url('../img/textures/stripes.png') repeat;
-	width: 300px;
-	height: 300px;
+	width: 250px;
+	height: 250px;
 }
 .album > .metadata
 {
@@ -280,6 +280,24 @@ img#gear:ACTIVE
     {
     	top: -16px;
     	width: 30px;
+    }
+}
+
+@media all and (min-width: 1100px)
+{
+    .album img
+    {
+    	width: 320px;
+    	height: 320px;
+    }
+}
+
+@media all and (min-width: 1400px)
+{
+    .album img
+    {
+    	width: 400px;
+    	height: 400px;
     }
 }
 
