@@ -95,6 +95,28 @@
                 MainTemplates::echoSelectionTemplate($username, $user->previousSelection());
             }
         }
+        
+        /**
+        * echoPreviousSelections
+        */
+        public function echoPreviousSelectionsByMonth($usernames, $fromDate)
+        {
+            $date = $fromDate;
+            while ($date < SelectionDate::currentDateIdentifier())
+            {
+                echo '<section class="month"><h1>'.$date.'</h1><br/>';
+                
+                foreach ($usernames as $username) 
+                {
+                    $user = new User($username);
+                    if (isset($user->selections->$date))
+                        MainTemplates::echoSelectionTemplate($username, $user->selections->$date);
+                }
+                echo '</section>';
+                
+                $date = date('Y-m', strtotime(date('Y-m', strtotime($date)).'+1 month'));
+            }
+        }
     }
 
 ?>

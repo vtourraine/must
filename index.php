@@ -35,7 +35,10 @@
     if ($session->isLoggedIn())
     {
         $usernames = array('eurimos', 'Tast', 'Terenn');
-        SelectionController::echoPreviousSelections($usernames);
+        if (isset($_GET['all']))
+            SelectionController::echoPreviousSelectionsByMonth($usernames, '2012-03');
+        else
+            SelectionController::echoPreviousSelections($usernames);
     }
     
     MainTemplates::echoMainFooter();

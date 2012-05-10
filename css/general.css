@@ -151,9 +151,17 @@ section > h2
     top: 0px;
 }
 
-img#gear
+section.month h1
+{
+    margin-top: 50px;
+    border-top: 4px solid #999999;
+    width: 90%;
+}
+
+img.icon
 {
 	margin-left: 10px;
+	margin-right: 10px;
 	position: relative;
 	top: 3px;
 	
@@ -164,7 +172,7 @@ img#gear
 	-ms-transition: opacity 500ms ease-in-out;
 	transition: opacity 500ms ease-in-out;
 }
-img#gear:HOVER
+img.icon:HOVER
 {
 	opacity: 1;
 	cursor: pointer;
@@ -187,7 +195,7 @@ img#gear:HOVER
 	 -ms-animation-iteration-count: infinite; 
 	 -ms-animation-timing-function: linear;
 }
-img#gear:ACTIVE
+img.icon:ACTIVE
 {
 	width: 24px;
 	top: 3px;
@@ -231,6 +239,10 @@ img#gear:ACTIVE
     {
         top: 0px;
         margin-bottom: 10px;
+    }
+    section.month h1
+    {
+        width: 100%;
     }
     
     .edit form
