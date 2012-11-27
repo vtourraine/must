@@ -1,0 +1,23 @@
+<h1>Listing selections</h1>
+
+<table>
+  <tr>
+    <th>Month</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @selections.each do |selection| %>
+  <tr>
+    <td><%= selection.month_id %></td>
+    <td><%= link_to 'Show', selection %></td>
+    <td><%= link_to 'Edit', edit_selection_path(selection) %></td>
+    <td><%= link_to 'Destroy', selection, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Selection', new_selection_path %>
