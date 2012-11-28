@@ -1,27 +1,22 @@
-<h1>Listing tracks</h1>
+<h1>Tracks</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>Image url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<section>
+  <% @tracks.each do |track| %>
+    <div class="track">
+      <div class="cover">
+        <img src="<%= track.image_url %>" alt="cover" />
+        <div class="meta">
+          <span class="title"><%= track.title %></span>
+          <span class="artist"><%= track.artist %></span>
+        </div>
+      </div>
+      <div class="actions">
+        <%= link_to 'Show', track %>
+        <%= link_to 'Edit', edit_track_path(track) %>
+        <%= link_to 'Destroy', track, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
 
-<% @tracks.each do |track| %>
-  <tr>
-    <td><%= track.title %></td>
-    <td><%= track.artist %></td>
-    <td><%= track.image_url %></td>
-    <td><%= link_to 'Show', track %></td>
-    <td><%= link_to 'Edit', edit_track_path(track) %></td>
-    <td><%= link_to 'Destroy', track, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Track', new_track_path %>
+  <%= link_to 'New Track', new_track_path %>
+</section>
