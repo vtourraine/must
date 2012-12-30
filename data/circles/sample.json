@@ -1,0 +1,8 @@
+{
+  "name": "Sample",
+  "path": "sample",
+  "members": [
+    "sample",
+    "sample2"
+  ]
+}
