@@ -1,0 +1,37 @@
+:plain
+  <?php
+    namespace Must;
+    session_start();
+  ?>
+<!DOCTYPE html>
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %title MUST#ALL
+    %link{:rel => "stylesheet", :type => "text/css", :href => "views/rendered/main.css"}
+    %meta{:name => "viewport", :content => "width=device-width"}
+  %body
+    :plain
+      <?php
+        require_once 'model/Circle.php';
+        require_once 'model/Member.php';
+        require_once 'model/Item.php';
+
+        if (isset($_POST['memberName']) && isset($_POST['memberPassword'])) {
+        	if (Member::login($_POST['memberName'], $_POST['memberPassword'])) {
+        		$_SESSION['memberName'] = $_POST['memberName'];
+        		$_SESSION['memberPasswordMD5'] = md5($_POST['memberPassword']);
+        	}
+        	else
+        		$errorMessage = 'Login Error';
+        }
+
+        include 'views/rendered/menu.php';
+        
+        if (isset($errorMessage))
+        	echo '<section>'.$errorMessage.'</section>';
+        if (!isset($_SESSION['memberName']))
+          include 'views/rendered/login.php';
+        else
+          include 'views/rendered/section.php';
+      ?>

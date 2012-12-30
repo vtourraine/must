@@ -1,0 +1,11 @@
+%section
+  %h1 LOGIN
+  %form{:method => "post"}
+    .field
+      %label{:for =>"memberName"} Member Name
+      %input#memberName{:type => "text", :name => "memberName"}
+    .field
+      %label{:for =>"memberPassword"} Password
+      %input#memberPassword{:type => "password", :name => "memberPassword"}
+    .field
+      %input{:type => "submit", :value => "Login"}

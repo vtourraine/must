@@ -1,0 +1,143 @@
+$margin: 20px;
+$darkTextColor: #555;
+$darkerTextColor: #333;
+$lightTextColor: #999;
+$textColor: #777;
+
+@import url(http://fonts.googleapis.com/css?family=Play:400,700);
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: black;
+  color: #eee;
+  font-family: 'Play', Arial, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
+header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 150px;
+  height: 100%;
+  background-color: #111;
+  padding: $margin/2;
+  color: $darkTextColor;
+
+  &:HOVER {
+    color: $lightTextColor;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  nav {
+    margin-top: $margin;
+
+    ul {
+      list-style: none;
+      padding-left: 0px;
+      margin-top: $margin/4;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+
+        &:HOVER {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+h1, h2, h3 {
+  margin: 0px;
+}
+
+section {
+  margin-left: 240px;
+  height: 100%;
+  
+  article {
+    position: relative;
+    display: block;
+    height: 100%;
+
+    .cover {
+      display: inline-block; 
+      width: 60%; 
+      text-align: center; 
+      vertical-align: middle;
+      position: relative;
+      max-height: 90%;
+      top: 5%;
+
+      img {
+        max-height: 90%;
+      }
+    }
+
+    .card {
+      margin: $margin;
+      background-color: black;
+      color: $textColor;
+      display: inline-block;
+      vertical-align: top;
+
+      position: relative;
+      max-height: 90%;
+      max-width: 30%;
+      top: 5%;
+
+      & > * {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        color: $lightTextColor;
+      }
+      h3 {
+        color: $darkTextColor;
+        font-size: 1em;
+        font-weight: normal;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:HOVER {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  h1 {
+    margin-top: $margin/2;
+    margin-bottom: $margin;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    position: relative;
+    left: -50px;
+    color: $darkTextColor;
+  }
+
+  form {
+    label {
+      display: inline-block;
+      width: 150px;
+    }
+    input[type=submit] {
+      margin-top: $margin;
+    }
+  }
+}

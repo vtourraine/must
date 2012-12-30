@@ -1,0 +1,53 @@
+:plain
+  <?php
+    namespace Must;
+  ?>
+%section
+  :plain
+    <?php
+      require_once 'model/Member.php';
+
+      $filter = 'list';
+      if (isset($_GET['filter']))
+        $filter = $_GET['filter'];
+      $scope = 'me';
+      if (isset($_GET['scope']))
+        $scope = $_GET['scope'];
+
+      $member = new Member($_SESSION['memberName']);
+      if ($filter == 'favs')
+        $items = $member->favs;
+      else if ($filter == 'next') 
+        $items = $member->next;
+      else
+        $items = $member->list;
+
+      echo '<h1>'.ucfirst($scope).'/'.ucfirst($filter).'</h1>';
+
+      foreach($items as $itemPath) {
+        $item = json_decode(file_get_contents('data/items/'.$itemPath.'.json'));
+        $imageURL = 'data/images/'.$itemPath.'.jpg';
+    ?>
+  %article
+    .cover
+      :plain 
+        <img src="<?php echo $imageURL; ?>">
+    .card
+      %h2 <?php echo $item->title ?>
+      .general <?php echo $item->type ?>, <?php echo $item->year ?>
+      .authors by <?php echo implode(', ', $item->authors); ?>
+      //.pubdate Pub date
+      //.description Description
+      .tags 
+        %h3 Tags
+        <?php foreach($item->tags as $tag) echo '# '.$tag.'<br/>'; ?>
+      .links
+        %h3 Links
+        <?php foreach($item->links as $linkName => $linkURL) echo '<a href="'.$linkURL.'">&gt; '.$linkName.'</a><br />'; ?>
+      .related 
+        %h3 Related
+        <?php foreach($item->related as $related) echo '~ '.$related; ?>
+  :plain
+    <?php
+      }
+    ?>
