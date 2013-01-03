@@ -20,7 +20,13 @@
         public static function previousDateIdentifier()
         {
             $date = getdate();
-            $date['mon'] = $date['mon'] - 1;
+            if ($date['mon'] == 1)
+            {
+              $date['mon'] = 12;
+              $date['year'] = $date['year'] - 1;
+            }
+            else
+              $date['mon'] = $date['mon'] - 1;
             return SelectionDate::dateIdentifier($date);
         }
         
