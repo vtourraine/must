@@ -1,0 +1,14 @@
+%h1 Tracks
+
+%section
+  - @tracks.each do |track|
+    .track
+      .cover
+        %img{:src => track.image_url, :alt => "cover"}
+        .meta
+          .title= track.title
+          .artist= track.artist
+          .actions
+            = link_to 'Edit', edit_track_path(track)
+
+  = link_to 'New Track', new_track_path, :class => 'action'

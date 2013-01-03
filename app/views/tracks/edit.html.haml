@@ -1,0 +1,7 @@
+%h1 Editing Track
+%section
+  = render 'form'
+
+  = link_to 'Delete', @track, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  |
+  = link_to 'Back', tracks_path

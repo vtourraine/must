@@ -4,6 +4,6 @@ Must::Application.routes.draw do
 
   resources :tracks
 
-  root :to => 'selections#index'
+  root :to => 'tracks#index'
   
 end

@@ -44,7 +44,7 @@ class TracksController < ApplicationController
 
     respond_to do |format|
       if @track.save
-        format.html { redirect_to @track, :notice => 'Track was successfully created.' }
+        format.html { redirect_to tracks_url, :notice => 'Track was successfully created.' }
         format.json { render :json => @track, :status => :created, :location => @track }
       else
         format.html { render :action => "new" }
