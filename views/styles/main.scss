@@ -1,8 +1,9 @@
 $margin: 20px;
-$darkTextColor: #555;
-$darkerTextColor: #333;
-$lightTextColor: #999;
-$textColor: #777;
+$dark-text-color: #555;
+$darker-text-color: #333;
+$light-text-color: #999;
+$text-color: #777;
+$layout-break-large-width: 1000px;
 
 @import url(http://fonts.googleapis.com/css?family=Play:400,700);
 
@@ -20,17 +21,12 @@ body {
 }
 
 header {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 150px;
-  height: 100%;
   background-color: #111;
   padding: $margin/2;
-  color: $darkTextColor;
+  color: $dark-text-color;
 
   &:HOVER {
-    color: $lightTextColor;
+    color: $light-text-color;
   }
 
   h1 {
@@ -45,12 +41,16 @@ header {
       padding-left: 0px;
       margin-top: $margin/4;
 
-      a {
-        text-decoration: none;
-        color: inherit;
+      li {
+        display: inline-block;
 
-        &:HOVER {
-          text-decoration: underline;
+        a {
+          text-decoration: none;
+          color: inherit;
+
+          &:HOVER {
+            text-decoration: underline;
+          }
         }
       }
     }
@@ -62,17 +62,14 @@ h1, h2, h3 {
 }
 
 section {
-  margin-left: 240px;
-  height: 100%;
-  
+  padding: $margin/2;
+
   article {
     position: relative;
     display: block;
-    height: 100%;
-
+    
     .cover {
-      display: inline-block; 
-      width: 60%; 
+      display: block;
       text-align: center; 
       vertical-align: middle;
       position: relative;
@@ -80,21 +77,18 @@ section {
       top: 5%;
 
       img {
-        max-height: 90%;
+        box-sizing: border-box;
+        width: 100%;
       }
     }
 
     .card {
-      margin: $margin;
+      display: block;
       background-color: black;
-      color: $textColor;
-      display: inline-block;
+      color: $text-color;
       vertical-align: top;
 
       position: relative;
-      max-height: 90%;
-      max-width: 30%;
-      top: 5%;
 
       & > * {
         display: block;
@@ -102,12 +96,21 @@ section {
       }
 
       h2 {
-        color: $lightTextColor;
+        color: $light-text-color;
       }
       h3 {
-        color: $darkTextColor;
+        color: $dark-text-color;
         font-size: 1em;
         font-weight: normal;
+      }
+
+      figure {
+        margin: 0;
+
+        blockquote {
+          margin: 0;
+          font-style: italic;
+        }
       }
 
       a {
@@ -123,21 +126,75 @@ section {
 
   h1 {
     margin-top: $margin/2;
-    margin-bottom: $margin;
+    margin-bottom: 0;
     font-size: 1.6em;
     text-transform: uppercase;
     position: relative;
-    left: -50px;
-    color: $darkTextColor;
+    color: $dark-text-color;
   }
 
   form {
+    margin-top: $margin;
+    
     label {
       display: inline-block;
       width: 150px;
     }
     input[type=submit] {
       margin-top: $margin;
+    }
+  }
+}
+
+@media screen and (min-width: $layout-break-large-width) {
+  header {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 150px;
+    height: 100%;
+
+    nav {
+      ul {
+        li {
+          display: block;
+        }
+      }
+    }
+  }
+
+  section {
+    margin-left: 240px;
+    min-height: 100%;
+    padding: 0;
+
+    h1 {
+      left: -50px;
+    }
+
+    article {
+      position: relative;
+      display: block;
+    
+      .cover {
+        display: inline-block;  
+        width: 60%; 
+
+        img {
+          width: auto;
+          max-height: 90%;
+          margin-top: 5%;
+          margin-bottom: 5%;
+        }
+      }
+
+      .card {
+        display: inline-block; 
+        max-height: 90%;
+        max-width: 30%;
+        margin-top: 5%;
+        padding: $margin;
+      }
     }
   }
 }

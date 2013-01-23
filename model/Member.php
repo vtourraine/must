@@ -8,9 +8,9 @@
     public $path;
   	public $passwordMD5;
     public $circle;
-    public $list = array();
-    public $next = array();
-    public $favs = array();
+    public $library;
+    public $next;
+    public $favs;
 
     static function absolutePath($path)
     {

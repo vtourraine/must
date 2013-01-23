@@ -11,6 +11,7 @@
     public $authors;
     public $related;
     public $year;
+    public $comments;
 
     static function absolutePath($path)
     {
