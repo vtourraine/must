@@ -3,6 +3,8 @@ $dark-text-color: #555;
 $darker-text-color: #333;
 $light-text-color: #999;
 $text-color: #777;
+$header-column-width: 150px;
+$layout-break-medium-width: 600px;
 $layout-break-large-width: 1000px;
 
 @import url(http://fonts.googleapis.com/css?family=Play:400,700);
@@ -64,6 +66,101 @@ h1, h2, h3 {
 section {
   padding: $margin/2;
 
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:HOVER {
+      text-decoration: underline;
+    }
+  }
+
+  .card {
+    vertical-align: top;
+    color: $text-color;
+
+    h2 {
+      color: $light-text-color;
+    }
+    h3 {
+      color: $dark-text-color;
+      font-size: 1em;
+      font-weight: normal;
+    }
+
+    figure {
+      margin: 0;
+
+      blockquote {
+        margin: 0;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+section.list {
+  article {
+    display: block;
+    margin-top: $margin;
+    margin-bottom: $margin*2;
+
+    .cover {
+      display: inline-block;
+      margin-bottom: $margin/2;
+      text-align: center;
+      width: 100%;
+
+      img {
+        box-sizing: border-box;
+        width: 100%;
+      }
+    }
+
+    .card {
+      display: inline-block;
+
+      h2 {
+        margin-bottom: $margin/2;
+      }
+      h3 {
+        margin-top: $margin/2; 
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $layout-break-medium-width) {
+
+  section.list {
+    display: table;
+    article {
+      display: table-row;
+      .cover {
+        display: table-cell;
+        width: 300px;
+        padding-right: $margin;
+        padding-bottom: $margin;
+        img {
+        }
+      }
+
+      .card {
+        display: table-cell;
+        padding-bottom: $margin;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $layout-break-large-width) {
+  section.list {
+    margin-left: $header-column-width + $margin;
+  }
+}
+
+section.focus {
+
   article {
     position: relative;
     display: block;
@@ -85,8 +182,6 @@ section {
     .card {
       display: block;
       background-color: black;
-      color: $text-color;
-      vertical-align: top;
 
       position: relative;
 
@@ -95,32 +190,7 @@ section {
         margin-bottom: 10px;
       }
 
-      h2 {
-        color: $light-text-color;
-      }
-      h3 {
-        color: $dark-text-color;
-        font-size: 1em;
-        font-weight: normal;
-      }
-
-      figure {
-        margin: 0;
-
-        blockquote {
-          margin: 0;
-          font-style: italic;
-        }
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-
-        &:HOVER {
-          text-decoration: underline;
-        }
-      }
+      
     }
   }
 
@@ -151,7 +221,7 @@ section {
     position: fixed;
     left: 0px;
     top: 0px;
-    width: 150px;
+    width: $header-column-width;
     height: 100%;
 
     nav {
@@ -163,7 +233,7 @@ section {
     }
   }
 
-  section {
+  section.focus {
     margin-left: 240px;
     min-height: 100%;
     padding: 0;
