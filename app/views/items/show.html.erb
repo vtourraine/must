@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @item.title %>
+</p>
+
+<p>
+  <b>Medium:</b>
+  <%= @item.medium %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%= @item.tags %>
+</p>
+
+<p>
+  <b>Authors:</b>
+  <%= @item.authors %>
+</p>
+
+<p>
+  <b>Published on:</b>
+  <%= @item.published_on %>
+</p>
+
+<p>
+  <b>Links:</b>
+  <%= @item.links %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @item.note %>
+</p>
+
+<p>
+  <b>Checked on:</b>
+  <%= @item.checked_on %>
+</p>
+
+<p>
+  <b>Favorite:</b>
+  <%= @item.favorite %>
+</p>
+
+<p>
+  <b>Next:</b>
+  <%= @item.next %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

@@ -1,0 +1,57 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :medium %><br />
+    <%= f.text_field :medium %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
+    <%= f.label :authors %><br />
+    <%= f.text_field :authors %>
+  </div>
+  <div class="field">
+    <%= f.label :published_on %><br />
+    <%= f.date_select :published_on %>
+  </div>
+  <div class="field">
+    <%= f.label :links %><br />
+    <%= f.text_area :links %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :checked_on %><br />
+    <%= f.date_select :checked_on %>
+  </div>
+  <div class="field">
+    <%= f.label :favorite %><br />
+    <%= f.check_box :favorite %>
+  </div>
+  <div class="field">
+    <%= f.label :next %><br />
+    <%= f.check_box :next %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
