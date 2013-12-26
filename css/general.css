@@ -68,13 +68,15 @@ section > h2
 	display: inline-block;
 	position: relative;
 	padding: 2px;
+	overflow: hidden;
+	width: 250px;
+	height: 250px;
 }
 .album img
 {
-	display: block;
 	background: url('../img/textures/stripes.png') repeat;
-	width: 250px;
-	height: 250px;
+	display: block;
+    position: absolute;
 }
 .album > .metadata
 {
@@ -297,7 +299,7 @@ img.icon:ACTIVE
 
 @media all and (min-width: 1100px)
 {
-    .album img
+    .album
     {
     	width: 320px;
     	height: 320px;
@@ -306,7 +308,7 @@ img.icon:ACTIVE
 
 @media all and (min-width: 1400px)
 {
-    .album img
+    .album 
     {
     	width: 400px;
     	height: 400px;
@@ -315,7 +317,7 @@ img.icon:ACTIVE
 
 @media all and (min-width: 1600px)
 {
-    .album img
+    .album
     {
     	width: 500px;
     	height: 500px;
