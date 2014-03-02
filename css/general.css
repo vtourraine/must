@@ -169,39 +169,78 @@ img.icon
 	
 	opacity: 0.6;
 	-webkit-transition: opacity 500ms ease-in-out;
-	-moz-transition: opacity 500ms ease-in-out;
-	-o-transition: opacity 500ms ease-in-out;
-	-ms-transition: opacity 500ms ease-in-out;
-	transition: opacity 500ms ease-in-out;
+	-moz-transition:    opacity 500ms ease-in-out;
+	-o-transition:      opacity 500ms ease-in-out;
+	-ms-transition:     opacity 500ms ease-in-out;
+	transition:         opacity 500ms ease-in-out;
 }
 img.icon:HOVER
 {
 	opacity: 1;
 	cursor: pointer;
 	
-  /* webkit chrome, safari, mobile */
-  -webkit-animation-name: spin; 
-  -webkit-animation-duration: 2000ms; /* 40 seconds */
-  -webkit-animation-iteration-count: infinite; 
-  -webkit-animation-timing-function: linear;
+    /* webkit chrome, safari, mobile */
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 2000ms; /* 40 seconds */
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
 	  
-  /* mozilla ff */
-  -moz-animation-name: spin; 
-  -moz-animation-duration: 2000ms; /* 40 seconds */
-  -moz-animation-iteration-count: infinite; 
-  -moz-animation-timing-function: linear;
+    /* mozilla ff */
+    -moz-animation-name: spin;
+    -moz-animation-duration: 2000ms; /* 40 seconds */
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
 	  
-	 /* microsoft ie */
-	 -ms-animation-name: spin; 
-	 -ms-animation-duration: 2000ms; /* 40 seconds */
-	 -ms-animation-iteration-count: infinite; 
-	 -ms-animation-timing-function: linear;
+    /* microsoft ie */
+    -ms-animation-name: spin;
+	-ms-animation-duration: 2000ms; /* 40 seconds */
+	-ms-animation-iteration-count: infinite;
+	-ms-animation-timing-function: linear;
 }
+
 img.icon:ACTIVE
 {
 	width: 24px;
 	top: 3px;
 	opacity: 0.8;
+}
+
+.listing
+{
+    text-align: left;
+}
+
+.listing .selection
+{
+}
+
+.listing .selection h2
+{
+    display: block;
+    transform:         rotate(0);
+    -ms-transform:     rotate(0);
+    -moz-transform:    rotate(0);
+    -webkit-transform: rotate(0);
+    -o-transform:      rotate(0);
+}
+
+.listing .album
+{
+    display: block;
+    width: auto;
+    height: auto;
+}
+
+.listing .album > .metadata
+{
+    opacity: 1;
+    position: relative;
+    bottom: 0;
+}
+
+.listing .album img
+{
+    display: none;
 }
 
 @media all and (max-width: 450px)

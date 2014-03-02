@@ -41,7 +41,7 @@
         /**
         * echoSelectionTemplate
         */
-        public static function echoSelectionTemplate($username, $selection)
+        public static function echoSelectionTemplate($username, $selection, $listing = false)
         {
             if (!$selection)
             {
@@ -57,7 +57,7 @@
                 $strings['[S-'.$i.'-ARTIST]'] = utf8_decode($selection[$index]->artist);
                 $strings['[S-'.$i.'-TITLE]'] = utf8_decode($selection[$index]->title);
                 
-                if ($selection[$index]->coverURL != '')
+                if (!$listing && $selection[$index]->coverURL != '')
                     $strings['[S-'.$i.'-COVER-URL]'] = 'src="'.utf8_decode($selection[$index]->coverURL).'" alt="album cover" ';
                 else
                     $strings['[S-'.$i.'-COVER-URL]'] = '';

@@ -104,13 +104,13 @@
             $date = $fromDate;
             while ($date < SelectionDate::currentDateIdentifier())
             {
-                echo '<section class="month"><h1>'.$date.'</h1><br/>';
+                echo '<section class="month listing"><h1>'.$date.'</h1><br/>';
                 
                 foreach ($usernames as $username) 
                 {
                     $user = new User($username);
                     if (isset($user->selections->$date))
-                        MainTemplates::echoSelectionTemplate($username, $user->selections->$date);
+                        MainTemplates::echoSelectionTemplate($username, $user->selections->$date, true);
                 }
                 echo '</section>';
                 
