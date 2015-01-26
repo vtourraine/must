@@ -11,11 +11,11 @@ import uuid
 
 from urllib2 import URLError
 
-USERS = ["MoyenCastor"]
+USERS = ["UserExample"]
 
 IMG_DIR = "data/images/"
 IMG_EXT = [".jpg", ".jpeg", ".png"]
-IMG_URL = "https://fistouille.scaron.info/data/images/"
+IMG_URL = "https://my_fantastic_url.info"
 MAX_SIZE = 8 * 1024 * 1024  # 8 MB
 UNKNOWN_URL = IMG_URL + "unknown_url.jpg"
 VERBOSE = False
