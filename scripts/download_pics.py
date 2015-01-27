@@ -11,11 +11,11 @@ import uuid
 
 from urllib2 import URLError
 
-USERS = ["UserExample"]
+USERS = ["RogerRabbit", "Gandalf", "NatsumeSoseki67"]
 
 IMG_DIR = "data/images/"
 IMG_EXT = [".jpg", ".jpeg", ".png"]
-IMG_URL = "https://my_fantastic_url.info"
+IMG_URL = "https://my_domain.net/"  # with trailing slash
 MAX_SIZE = 8 * 1024 * 1024  # 8 MB
 UNKNOWN_URL = IMG_URL + "unknown_url.jpg"
 VERBOSE = False
@@ -56,8 +56,9 @@ def prepare_download(url):
 
 
 def download_pic(url):
-    if url[:len(IMG_URL)] == IMG_URL:
+    if len(url) < 1 or url[:len(IMG_URL)] == IMG_URL:
         return url
+    print "url = '%s'" % url
     try:
         url_handler = urllib2.urlopen(url)
         validate_url(url_handler)
@@ -69,18 +70,9 @@ def download_pic(url):
             url = IMG_URL + dest_file
         url_handler.close()
     except (InvalidURL, URLError) as e:
-        print "Exception:\n%s\n%s\n" % (url, str(e))
+        print url
+        assert False, "Exception:\n%s\n%s\n" % (url, str(e))
     return url
-
-
-def download_pics(json_dict):
-    selections = json_dict["selections"]
-    for month, mo_sel in selections.iteritems():
-        for i, sel in enumerate(mo_sel):
-            for field, url in sel.iteritems():
-                if field == "coverURL":
-                    selections[month][i][field] = download_pic(url)
-    return True
 
 
 if __name__ == "__main__":
@@ -90,7 +82,12 @@ if __name__ == "__main__":
         print "Backup saved to", save_path
         shutil.copyfile(json_file, save_path)
         with open(json_file, "r") as fp:
-            jd = json.load(fp)
-        if download_pics(jd):
-            with open(json_file, "w") as fp:
-                json.dump(jd, fp)
+            json_dict = json.load(fp)
+        selections = json_dict["selections"]
+        for month, mo_sel in selections.iteritems():
+            for i, sel in enumerate(mo_sel):
+                for field, url in sel.iteritems():
+                    if field == "coverURL":
+                        selections[month][i][field] = download_pic(url)
+                        with open(json_file, "w") as fp:
+                            json.dump(json_dict, fp)
