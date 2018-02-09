@@ -109,8 +109,9 @@
                 foreach ($usernames as $username) 
                 {
                     $user = new User($username);
-                    if (isset($user->selections->$date))
+                    if (isset($user->selections->$date)) {
                         MainTemplates::echoSelectionTemplate($username, $user->selections->$date, true);
+                    }
                 }
                 echo '</section>';
                 
