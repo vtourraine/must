@@ -39,7 +39,6 @@
 
           $headers  = 'MIME-Version: 1.0'."\r\n";
           $headers .= 'Content-type: text/html; charset=utf-8'."\r\n";
-          $headers .= 'To: '.$recipient."\r\n";
           $headers .= 'From: Must <me@vtourraine.net>'."\r\n";
 
           if (mail($recipient, '[Must] '.$title, $body, $headers)) {
