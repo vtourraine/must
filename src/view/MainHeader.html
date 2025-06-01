@@ -5,6 +5,31 @@
         <title>Keres-Sy / Must</title>
         <link rel="stylesheet" type="text/css" href="css/general.css"/>
         <meta name="viewport" content="width=device-width" />
+        <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript">
+            $(window).load(function() {
+                // TODO: does not support window resizing
+                $('.album').find('img').each(function() {
+                    var scaling = (this.width > this.height)
+                        ? $(this).parent().height() / this.height
+                        : $(this).parent().width() / this.width;
+                    var newHeight = scaling * this.height;
+                    var newWidth = scaling * this.width;
+
+                    if (this.width > this.height) {
+                        var leftShift = -(newWidth - $(this).parent().width()) / 2;
+                        $(this).css('left', leftShift);
+                    } else {
+                        var upShift = -(newHeight - $(this).parent().height()) / 2;
+                        $(this).css('up', upShift);
+                    }
+
+                    $(this).css('height', newHeight);
+                    $(this).css('width', newWidth);
+                })
+                $(this).parent.css('background', 'transparent');
+            })
+      </script>
     </head>
     <body>
         <header>
