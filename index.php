@@ -15,32 +15,27 @@
     
     MainTemplates::echoMainHeader();
     
-    if (!$session->isLoggedIn())
-    {
-        if (LoginController::isLoginFormSubmitted($_POST))
-        {
-            if (LoginController::logIn($_POST, $session))
-            {
-            }
-            else
-            {
+    if (!$session->isLoggedIn()) {
+        if (LoginController::isLoginFormSubmitted($_POST)) {
+            if (LoginController::logIn($_POST, $session)) {}
+            else {
                 MainTemplates::echoLoginForm();
             }
         }
-        else
-        {
+        else {
             MainTemplates::echoLoginForm();
         }
     }
-    if ($session->isLoggedIn())
-    {
+
+    if ($session->isLoggedIn()) {
         $usernames = array('eurimos', 'Tast', 'Terenn');
-        if (isset($_GET['all']))
+        if (isset($_GET['all'])) {
             SelectionController::echoPreviousSelectionsByMonth($usernames, '2012-03');
-        else
+        }
+        else {
             SelectionController::echoPreviousSelections($usernames);
+        }
     }
-    
+
     MainTemplates::echoMainFooter();
-        
 ?>
